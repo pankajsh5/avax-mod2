@@ -1,46 +1,47 @@
-# AmazonMall Contract
+# Netflix Subscription Smart Contract
 
-## Overview
-
-AmazonMall is a smart contract written in Solidity that simulates a basic e-commerce system. It allows the owner to manage inventory, add new items, and handle user transactions.
+This smart contract manages Netflix subscriptions, allowing the owner to grant access to multiple addresses and control login permissions.
 
 ## Features
 
-- **Inventory Management**: The owner can add new items to the inventory and update the quantity of existing items.
+- **Owner Management**: The contract creator becomes the owner and has special privileges.
+- **Change Password**: Only the owner can change the password.
+- **Access Management**: The owner can grant and revoke access to other addresses.
+- **Login System**: Users with access can log in with the correct password.
 
-- **User Transactions**: Users can purchase items from the inventory, and their balances are adjusted accordingly.
+## Contract Functions
 
-## Prerequisites
+### `constructor()`
 
-- Solidity ^0.8.9
+- Initializes the contract with the creator as the owner and sets an initial password.
 
-## Contract Details
+### `changePassword(uint256 oldPassword, uint256 newPassword)`
 
-### Constructor
+- Allows the owner to change the password.
 
-The constructor initializes the contract with the owner's address.
+### `grantAccess(address addr)`
 
-### Functions
+- Grants access to a specified address, allowing them to log in.
+- Limited to 4 devices per account.
 
-- **addItemCount**: Allows the owner to update the quantity of an existing item in the inventory.
+### `revokeAccess(address addr)`
 
-- **addNewItem**: Allows the owner to add a new item to the inventory along with its initial quantity and price.
+- Revokes access from a specified address.
 
-- **buyItem**: Allows users to purchase items from the inventory. It deducts the item price from the user's balance and updates the item quantity.
+### `loginAccount(address addr, uint256 key)`
 
-- **addNewUser**: Allows the owner to add a new user to the system with an initial balance of 7000 wei.
+- Allows an address with access to log in with the correct password.
 
-- **getContractAddress**: Returns the address of the contract.
+### `getContractAddress()`
+
+- Retrieves the contract address.
 
 ## Usage
 
-1. Deploy the `AmazonMall` contract to your preferred Ethereum network.
-
-2. Use the provided functions to manage inventory and handle user transactions.
-
-## License
-
-This contract is provided under an unlicensed status. See the [UNLICENSE](UNLICENSE) file for details.
+1. Deploy the contract.
+2. Owner can change the password using `changePassword`.
+3. Owner can grant or revoke access to addresses using `grantAccess` and `revokeAccess`.
+4. Users with access can log in using `loginAccount`.
 
 ## Project Setup Instructions
 
