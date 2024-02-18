@@ -77,5 +77,3 @@ To run this project on your computer after cloning the GitHub repository, follow
 5. **Access the Project:**
    - The project will be accessible on your local machine, typically at [http://localhost:3000/](http://localhost:3000/).
 
-Now, the project is successfully running on your localhost. Ensure to follow these steps in sequence for a smooth setup process.
-# avax-mod2
